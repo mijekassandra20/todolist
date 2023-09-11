@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Poppins:wght@200;300;400;500;600&display=swap');
+
+:root {
+    --main-font: "Poppins";
+    --main-green: #ddedea;
+    --green-selected: #c7d8d5;
+    --green-dark: #666a6a;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-family: var(--main-font);
+    font-size: calc(18px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+
+
+p {
+    margin: 0;
+    font-family: var(--main-font);
+}
+
+button {
+    cursor: pointer;
+    font-family: var(--main-font);
+    font-weight: 500;
+}
+
+input, li {
+    font-family: var(--main-font);
+}
+
+.icon-styles {
+    margin-inline: 1rem;
+    margin-block: 0.2rem;
+}
+
+/* ------------------------------------------------------ */
+
+.app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main-container {
+    max-width: 700px;
+    min-width: 200px;
+    height: 500px;
+    box-shadow:
+    2.6px 2.4px 5.3px rgba(0, 0, 0, 0.15),
+    8.7px 8px 17.9px rgba(0, 0, 0, 0.089),
+    39px 36px 80px rgba(0, 0, 0, 0.061);
+}
+
+.title-container {
+    background: var(--main-green);
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.body-container {
+    padding: 2rem 4rem;
+    overflow-y: scroll;
+    height: 300px;   
+}
+
+.each-todo {
+    display: flex;
+    justify-content: space-between;
+    margin: 3px;
+}
+
+.default-style {
+    color: var(--green-dark);
+    cursor: pointer;
+}
+
+.default-style:hover {
+    color: var(--main-green);
+
+}
+
+.completed-task {
+    text-decoration:line-through;
+    color: var(--green-selected);
+}
+
+.flex-gap {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.flex-gap input {
+    border-top-left-radius: 6px ;
+    border-bottom-left-radius: 6px;
+    border: 2px solid var(--green-dark);
+    height: 25px;
+    width: inherit;
+    padding: 5px 10px;
+}
+
+.flex-gap button {
+  width: 100px;
+  padding: 5px 10px;
+  border-top-right-radius: 6px ;
+  border-bottom-right-radius: 6px;
+  border: none;
+  background: #b2d8d3;
+}
+
+.flex-gap button:hover {
+    background: var(--green-selected);
+    color: white;
+
+}
+
+/* ----------------------------------- */
+
+@media only screen and (max-width: 700px) {
+
+    li {
+        font-size: 14px ;
+    }
+    
+    .body-container {
+        padding: 2rem;
+    }
+}
