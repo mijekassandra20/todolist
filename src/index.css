@@ -3,7 +3,7 @@
 :root {
     --main-font: "Poppins";
     --main-green: #ddedea;
-    --green-selected: #c7d8d5;
+    --green-selected: #afc3bf;
     --green-dark: #546b6b;
 }
 
@@ -35,8 +35,6 @@ input, li {
 }
 
 .icon-styles {
-    margin-inline: 1rem;
-    margin-block: 0.2rem;
     color: var(--green-dark);
     cursor: pointer;
 }
@@ -55,8 +53,8 @@ input, li {
 }
 
 .main-container {
-    max-width: 700px;
-    min-width: 200px;
+    width: 600px;
+    min-width: 300px;
     height: 500px;
     box-shadow:
     2.6px 2.4px 5.3px rgba(0, 0, 0, 0.15),
@@ -75,6 +73,13 @@ input, li {
 
 .body-container {
     padding: 2rem 4rem;
+}
+
+.icon-container {
+    display: flex;
+    gap: 10px;
+    margin-inline: 1rem;
+    margin-block: 0.2rem;
 }
 
 .flex-gap {
@@ -109,7 +114,7 @@ input, li {
 }
 
 .todo-container {
-    margin-top: 15px;
+    margin-top: 10px;
     overflow-y: scroll;
     height: 300px;   
 }
@@ -135,6 +140,17 @@ input, li {
     color: var(--green-selected);
 }
 
+/* SWEET ALERT----------------------------------- */
+
+label.swal2-input-label,
+#swal2-textarea  {
+    font-family: var(--main-font);
+}
+
+.swal2-confirm.swal2-styled {
+    background: #9dd2c7;
+    width: 80px;
+}
 
 
 /* ----------------------------------- */

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
-import {RiDeleteBinLine} from 'react-icons/ri'
+// imported packages
+import {RiDeleteBinLine, RiEditLine} from 'react-icons/ri'
+import Swal from "sweetalert2";
 
+// imported files
 import '../index.css'
 
 type Todo = {
@@ -19,24 +22,13 @@ const TodoList: React.FC = () => {
     ]);
     const [input, setInput] = useState<string>('');
     const [errorMessage, setErrorMessage] = useState<string>('')
+    // const [editModal, setEditModal] = useState<boolean>(false)
 
     useEffect(() => {
         setTimeout(() => {
             setErrorMessage("");
         }, 3000)
     }, [errorMessage, setErrorMessage])
-
-
-    const handleAdd = () => {
-
-        if(!input){
-            setErrorMessage('Please input a todo.')
-        } else {
-            const newTodo: Todo = {id: Date.now(), text: input, completed: false};
-            setTodos([...todos, newTodo])
-            setInput('')
-        }
-    }
 
     const handleDoneToggle = (id:number) => {
         setTodos(
@@ -53,6 +45,43 @@ const TodoList: React.FC = () => {
         )
     }
 
+    const handleAdd = () => {
+        if(!input){
+            setErrorMessage('Please input a todo.')
+        } else {
+            const newTodo: Todo = {id: Date.now(), text: input, completed: false};
+            setTodos([...todos, newTodo])
+            setInput('')
+        }
+    }
+
+    const handleEditToggle = async (id:number, todoText:string) => {
+        if(id){
+            const { value: editedText } = await Swal.fire({
+                input: 'textarea',
+                inputLabel: 'Edit',
+                inputValue: `${todoText}`,
+                inputAttributes: {
+                  'aria-label': 'Type your text here'
+                },
+                showCancelButton: true
+              })
+              
+              if (editedText) {
+                const updatedTodos = todos.map((todo) => {
+                    if(todo.id === id) {
+                        return {
+                            ...todo,
+                            text: editedText
+                        }
+                    }
+                    return todo;
+                })
+                setTodos(updatedTodos);
+              }
+        }
+    }
+
     const handleDelete = (id: number) => {
         setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
         console.log(todos)
@@ -61,7 +90,7 @@ const TodoList: React.FC = () => {
   return (
     <div className='main-container'>
         <div className='title-container'>
-        <h2>TodoList using Typescript + React</h2>
+        <h2>Todo App using Typescript + React</h2>
         </div>
         <div className='body-container'>
             <div className='flex-gap'>
@@ -85,9 +114,16 @@ const TodoList: React.FC = () => {
                         onClick={() => handleDoneToggle(todo.id)}
                         >{todo.text}</li>
 
-                        <RiDeleteBinLine 
-                        className='icon-styles'
-                        onClick={() => handleDelete(todo.id)}/>
+                        <div className='icon-container'>
+                            <RiEditLine 
+                                className='icon-styles'
+                                onClick={() => handleEditToggle(todo.id, todo.text)}
+                            />
+                            <RiDeleteBinLine 
+                            className='icon-styles'
+                            onClick={() => handleDelete(todo.id)}/>
+                        </div>
+                       
                     </div>
                     
                 ))}
