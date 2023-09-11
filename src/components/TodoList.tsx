@@ -18,7 +18,7 @@ const TodoList: React.FC = () => {
         {id: 1, text: "Learn MUI", completed:true},
         {id: 2, text: "Learn RTK Query", completed:true},
         {id: 3, text: "Learn Typescript", completed:false},
-        {id: 4, text: "Learn Typescript with implentation of React", completed:false},
+        {id: 4, text: "Learn Typescript with implementation of React", completed:false},
     ]);
     const [input, setInput] = useState<string>('');
     const [errorMessage, setErrorMessage] = useState<string>('')
